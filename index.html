@@ -31,7 +31,6 @@
     overflow-x: hidden;
   }
 
-  /* GRID BACKGROUND */
   body::before {
     content: '';
     position: fixed;
@@ -45,7 +44,6 @@
     z-index: 0;
   }
 
-  /* NAV */
   nav {
     position: fixed;
     top: 0; left: 0; right: 0;
@@ -64,7 +62,7 @@
     color: var(--accent);
     letter-spacing: 0.05em;
   }
-  .nav-links { display: flex; gap: 32px; }
+  .nav-links { display: flex; gap: 32px; align-items: center; }
   .nav-links a {
     color: var(--dim);
     text-decoration: none;
@@ -73,11 +71,25 @@
     transition: color 0.2s;
   }
   .nav-links a:hover { color: var(--text); }
+  .nav-resume-btn {
+    padding: 7px 16px;
+    border-radius: 6px;
+    background: rgba(59,130,246,0.15);
+    border: 1px solid rgba(59,130,246,0.4);
+    color: var(--accent) !important;
+    font-family: var(--mono);
+    font-size: 12px !important;
+    letter-spacing: 0.05em;
+    transition: all 0.2s !important;
+  }
+  .nav-resume-btn:hover {
+    background: rgba(59,130,246,0.28) !important;
+    color: #fff !important;
+    border-color: var(--accent) !important;
+  }
 
-  /* SECTIONS */
   section { position: relative; z-index: 1; }
 
-  /* HERO */
   .hero {
     min-height: 100vh;
     display: flex;
@@ -172,8 +184,19 @@
     border: 1px solid var(--border);
   }
   .btn-outline:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-1px); }
+  .btn-linkedin {
+    background: rgba(10,102,194,0.15);
+    color: #60a5fa;
+    border: 1px solid rgba(10,102,194,0.4);
+  }
+  .btn-linkedin:hover { background: rgba(10,102,194,0.3); border-color: #3b82f6; transform: translateY(-1px); }
+  .btn-resume {
+    background: rgba(16,185,129,0.12);
+    color: #34d399;
+    border: 1px solid rgba(16,185,129,0.35);
+  }
+  .btn-resume:hover { background: rgba(16,185,129,0.25); border-color: #10b981; transform: translateY(-1px); }
 
-  /* CONTENT SECTIONS */
   .section-wrap {
     max-width: 1100px;
     margin: 0 auto;
@@ -194,7 +217,6 @@
     margin-bottom: 48px;
   }
 
-  /* DIVIDER */
   .divider {
     height: 1px;
     background: var(--border);
@@ -202,7 +224,6 @@
     margin: 0 auto;
   }
 
-  /* EXPERIENCE */
   .timeline { display: flex; flex-direction: column; gap: 0; }
   .timeline-item {
     display: grid;
@@ -231,7 +252,6 @@
   .tl-company { color: var(--accent); font-size: 14px; font-weight: 500; margin-bottom: 10px; }
   .tl-desc { color: var(--dim); font-size: 14px; line-height: 1.7; }
 
-  /* SKILLS */
   .skills-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -264,7 +284,6 @@
     border: 1px solid var(--border);
   }
 
-  /* PROJECTS */
   .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -308,7 +327,6 @@
     border: 1px solid rgba(6,182,212,0.2);
   }
 
-  /* CONTACT */
   .contact-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -328,11 +346,36 @@
     transition: border-color 0.2s, transform 0.2s;
   }
   .contact-item:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .contact-item.linkedin-item:hover { border-color: #3b82f6; }
   .contact-icon { font-size: 22px; }
   .contact-label { font-size: 12px; color: var(--muted); font-family: var(--mono); }
   .contact-value { font-size: 14px; font-weight: 500; }
 
-  /* FOOTER */
+  /* Resume banner card */
+  .resume-banner {
+    background: linear-gradient(135deg, rgba(16,185,129,0.08) 0%, rgba(6,182,212,0.08) 100%);
+    border: 1px solid rgba(16,185,129,0.25);
+    border-radius: 16px;
+    padding: 32px 36px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+    margin-bottom: 48px;
+  }
+  .resume-banner-left { display: flex; align-items: center; gap: 20px; }
+  .resume-icon {
+    width: 52px; height: 52px;
+    border-radius: 12px;
+    background: rgba(16,185,129,0.15);
+    border: 1px solid rgba(16,185,129,0.3);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 24px;
+  }
+  .resume-banner-title { font-size: 18px; font-weight: 700; margin-bottom: 4px; }
+  .resume-banner-sub { font-size: 13px; color: var(--dim); font-family: var(--mono); }
+
   footer {
     text-align: center;
     padding: 40px 24px;
@@ -344,14 +387,14 @@
     z-index: 1;
   }
 
-  /* RESPONSIVE */
   @media (max-width: 700px) {
-    nav { padding: 16px 24px; }
-    .nav-links { gap: 18px; }
+    nav { padding: 16px 20px; }
+    .nav-links { gap: 14px; }
     .hero { padding: 100px 24px 60px; }
     .section-wrap { padding: 60px 24px; }
     .timeline-item { grid-template-columns: 1fr; gap: 8px; }
     .contact-grid { grid-template-columns: 1fr; }
+    .resume-banner { flex-direction: column; align-items: flex-start; }
   }
 </style>
 </head>
@@ -364,6 +407,8 @@
     <a href="#skills">Skills</a>
     <a href="#projects">Projects</a>
     <a href="#contact">Contact</a>
+    <a href="https://www.linkedin.com/in/thangaraj-k-035013b1" target="_blank" rel="noopener" class="nav-resume-btn">💼 LinkedIn</a>
+    <a href="Thangarajk.pdf" download="Thangaraj_K_Resume.pdf" class="nav-resume-btn" style="color:#34d399 !important; border-color:rgba(16,185,129,0.4); background:rgba(16,185,129,0.1);">⬇ Resume</a>
   </div>
 </nav>
 
@@ -393,6 +438,8 @@
       </div>
       <div class="hero-actions">
         <a href="#contact" class="btn btn-primary">📬 Get in Touch</a>
+        <a href="https://www.linkedin.com/in/thangaraj-k-035013b1" target="_blank" rel="noopener" class="btn btn-linkedin">💼 LinkedIn</a>
+        <a href="Thangarajk.pdf" download="Thangaraj_K_Resume.pdf" class="btn btn-resume">⬇ Download Resume</a>
         <a href="#projects" class="btn btn-outline">View Projects →</a>
       </div>
     </div>
@@ -645,6 +692,19 @@
   <div class="section-wrap">
     <div class="section-label">// connect</div>
     <h2 class="section-title">Get in Touch</h2>
+
+    <!-- Resume download banner -->
+    <div class="resume-banner">
+      <div class="resume-banner-left">
+        <div class="resume-icon">📄</div>
+        <div>
+          <div class="resume-banner-title">Download My Resume</div>
+          <div class="resume-banner-sub">Thangaraj_K_Resume.pdf · Java Technical Lead</div>
+        </div>
+      </div>
+      <a href="Thangarajk.pdf" download="Thangaraj_K_Resume.pdf" class="btn btn-resume" style="white-space:nowrap;">⬇ Download PDF</a>
+    </div>
+
     <div class="contact-grid">
       <a href="mailto:thangarajkubendiran@hotmail.com" class="contact-item">
         <div class="contact-icon">✉️</div>
@@ -660,18 +720,18 @@
           <div class="contact-value">+91 9566001343</div>
         </div>
       </a>
-      <a href="https://github.com/thangaraj-dev" class="contact-item">
+      <a href="https://www.linkedin.com/in/thangaraj-k-035013b1" target="_blank" rel="noopener" class="contact-item linkedin-item">
+        <div class="contact-icon">💼</div>
+        <div>
+          <div class="contact-label">LinkedIn</div>
+          <div class="contact-value">thangaraj-k-035013b1</div>
+        </div>
+      </a>
+      <a href="https://github.com/thangaraj-dev" target="_blank" rel="noopener" class="contact-item">
         <div class="contact-icon">🐙</div>
         <div>
           <div class="contact-label">GitHub</div>
           <div class="contact-value">github.com/thangaraj-dev</div>
-        </div>
-      </a>
-      <a href="https://linkedin.com/in/YOUR_LINKEDIN" class="contact-item">
-        <div class="contact-icon">💼</div>
-        <div>
-          <div class="contact-label">LinkedIn</div>
-          <div class="contact-value">Connect on LinkedIn</div>
         </div>
       </a>
     </div>
@@ -684,4 +744,3 @@
 
 </body>
 </html>
-
